@@ -27,5 +27,24 @@
   "[postcss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "prettier.singleQuote": true
+  "prettier.singleQuote": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "javascript",
+    "javascript": "javascript",
+    "html": "HTML"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "eslint.workingDirectories": [
+    "."
+  ],
 }
