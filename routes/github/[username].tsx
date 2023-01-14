@@ -14,14 +14,12 @@ export const handler: Handlers<User | null> = {
       return ctx.render(null);
     }
     const user: User = await resp.json();
-console.log(ctx)
 
     return ctx.render(user);
   },
 };
 
 export default function Page({ data }: PageProps<User | null>) {
-
   if (!data) {
     return <h1>User not found</h1>;
   }
