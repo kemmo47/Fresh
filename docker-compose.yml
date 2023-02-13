@@ -1,49 +1,9 @@
-version: '3,7'
+version: '3'
 
 services:
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    environment:
-      DB_HOST: db
-      DB_DATABASE: auth
-      DB_USERNAME: root
-      DB_PASSWORD: root
+  web:
+    build: .
+    container_name: deno-container
+    image: deno-image
     ports:
-      - 8000:8000
-    volumes:
-      - ./backend:/app/backend
-    depends_on:
-      - db
-    networks:
-      - app
-
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    tty: true
-    ports:
-      - 3000:8000
-    volumes:
-      - ./frontend:/app/frontend
-    depends_on:
-      - backend
-    networks:
-        - app
-
-  db:
-    platform: linux/amd64
-    image: mysql:5.7.22
-    environment:
-      MYSQL_DATABASE: 'auth'
-      MYSQL_USER: 'root'
-      MYSQL_PASSWORD: 'root'
-      MYSQL_ROOT_PASSWORD: 'root'
-    networks:
-        - app
-
-networks:
-  app:
-    driver: bridge
+      - "8000:8000"
