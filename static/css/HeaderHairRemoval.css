@@ -1,0 +1,34 @@
+.firstViewLabel {
+  border-bottom: 1px solid #888888;
+}
+.firstViewLabel:hover {
+  color: #ffccdd;
+  background: #aa6699;
+}
+.firstViewLabel:hover:after {
+  border-top: 40px solid #aa6699;
+}
+.firstViewLabel:after {
+  content: " ";
+  position: absolute;
+  left: 50%;
+  bottom: -40px;
+  border-top: 40px solid #ff66aa;
+  border-right: 30px solid transparent;
+  border-left: 30px solid transparent;
+  border-bottom: none;
+  transform: translate(-50%, 0%);
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.firstViewLabel:before {
+  content: " ";
+  position: absolute;
+  left: 50%;
+  bottom: -42px;
+  border-top: 41px solid #888888;
+  border-right: 31px solid transparent;
+  border-left: 31px solid transparent;
+  border-bottom: none;
+  transform: translate(-50%, 0%);
+}
