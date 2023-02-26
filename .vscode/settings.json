@@ -1,16 +1,12 @@
 {
   "deno.enable": true,
-  "deno.unstable": true,
   "deno.lint": true,
-  "[typescript]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
-  },
+  "editor.defaultFormatter": "denoland.vscode-deno",
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "search.exclude": {
     "package-lock.json": true
   },
-  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": [
     "source.addMissingImports",
@@ -31,12 +27,4 @@
   "[postcss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "eslint.workingDirectories": [
-    "./app"
-  ],
-  "prettier.singleQuote": true,
-  "cSpell.words": [
-    "tailwindcss",
-    "webp"
-  ]
 }
