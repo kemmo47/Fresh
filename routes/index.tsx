@@ -27,7 +27,7 @@ const initialReducerState: StateReducerType = {
 
 const filterBySingleCondition = (
   inputCompanies: Company[],
-  filterVal: FilterValType,
+  filterVal: FilterValType
 ): Company[] => {
   let newListCompany = inputCompanies;
   if (Array.isArray(filterVal) && filterVal.length > 0) {
@@ -43,7 +43,7 @@ const filterBySingleCondition = (
 
 export const reducerFilter = (
   state: StateReducerType,
-  action: ActionType,
+  action: ActionType
 ): StateReducerType => {
   switch (action.type) {
     // deno-lint-ignore no-case-declarations
@@ -107,7 +107,7 @@ export default function Home() {
     const listComboDefaultTrue = FILTER_LIST.filter(
       (item: { parent_order: number }) => {
         return item.parent_order === 2;
-      },
+      }
     )[0]?.items.filter((x: any) => x.combo_default === true);
 
     listComboDefaultTrue?.map((y: { answer_options: string }) => {
@@ -122,32 +122,32 @@ export default function Home() {
   const sortCompanyBeforeShow = (a: Hair, b: Hair) => {
     return (
       Number(
-          getKeySortCompanyByFilterPlan("cost")
-            ? a[getKeySortCompanyByFilterPlan("cost") as keyof Hair]
-            : handleKeyComboDefault().toString()
-            ? a[handleKeyComboDefault("cost") as keyof Hair]
-            : a.body_face_vio_cost,
-        ) /
+        getKeySortCompanyByFilterPlan("cost")
+          ? a[getKeySortCompanyByFilterPlan("cost") as keyof Hair]
+          : handleKeyComboDefault().toString()
+          ? a[handleKeyComboDefault("cost") as keyof Hair]
+          : a.body_face_vio_cost
+      ) /
         Number(
           getKeySortCompanyByFilterPlan("number_of_times")
             ? a[getKeySortCompanyByFilterPlan("number_of_times") as keyof Hair]
             : handleKeyComboDefault().toString()
             ? a[handleKeyComboDefault("number_of_times") as keyof Hair]
-            : a.body_face_vio_number_of_times,
+            : a.body_face_vio_number_of_times
         ) -
       Number(
-          getKeySortCompanyByFilterPlan("cost")
-            ? b[getKeySortCompanyByFilterPlan("cost") as keyof Hair]
-            : handleKeyComboDefault().toString()
-            ? b[handleKeyComboDefault("cost") as keyof Hair]
-            : b.body_face_vio_cost,
-        ) /
+        getKeySortCompanyByFilterPlan("cost")
+          ? b[getKeySortCompanyByFilterPlan("cost") as keyof Hair]
+          : handleKeyComboDefault().toString()
+          ? b[handleKeyComboDefault("cost") as keyof Hair]
+          : b.body_face_vio_cost
+      ) /
         Number(
           getKeySortCompanyByFilterPlan("number_of_times")
             ? b[getKeySortCompanyByFilterPlan("number_of_times") as keyof Hair]
             : handleKeyComboDefault().toString()
             ? b[handleKeyComboDefault("number_of_times") as keyof Hair]
-            : b.body_face_vio_number_of_times,
+            : b.body_face_vio_number_of_times
         )
     );
   };
@@ -182,26 +182,18 @@ export default function Home() {
     <>
       <Head>
         <title>Fresh App</title>
-        <link
-          rel="stylesheet"
-          href={asset("./css/index.css")}
-        />
-        <link
-          rel="stylesheet"
-          href={asset("./css/ItemHair.css")}
-        />
+        <link rel="stylesheet" href={asset("./css/index.css")} />
+        <link rel="stylesheet" href={asset("./css/ItemHair.css")} />
       </Head>
 
       <HeaderHairRemoval />
       <FilterContext.Provider value={{ state, dispatch }}>
         <div className="relative lg:mx-0 lg:pb-12">
           {/* <Filter /> */}
-          {
-            /* <Curves
+          {/* <Curves
             classNameI={"absolute bottom-[-1px] w-full h-auto z-0"}
             fillColor={"#ffccdd"}
-          /> */
-          }
+          /> */}
         </div>
 
         <div
@@ -212,15 +204,13 @@ export default function Home() {
             <NumberHair numberHair={state.companies.length} />
 
             <div className="my-3.5 lg:my-11">
-              {
-                /* {showCompaniesPRList.map((item) => {
+              {/* {showCompaniesPRList.map((item) => {
                 return (
                   <div className="mb-6" key={item.id}>
                     <ItemHairPR company={item} />
                   </div>
                 );
-              })} */
-              }
+              })} */}
 
               <ItemHairPR company={state.companies} />
             </div>
@@ -237,10 +227,7 @@ export default function Home() {
               {state.companies.map((company) => {
                 return (
                   <div className="mb-6" key={company.id}>
-                    <ItemHair
-                      item={company}
-                      isPRItem={false}
-                    />
+                    <ItemHair item={company} isPRItem={false} />
                   </div>
                 );
               })}
