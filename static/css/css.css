@@ -1,0 +1,21 @@
+.parent {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%/3, max(64px, 100%/5)), 1fr))
+}
+
+@media only screen and (max-width: 1024px) {
+  .parent {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%/3, max(64px, 100%/4)), 1fr))
+  }
+}
+
+@media only screen and (max-width: 984px) {
+  .parent {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%/3, max(64px, 100%/3)), 1fr))
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .parent {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%/3, max(64px, 100%/2)), 1fr))
+  }
+}

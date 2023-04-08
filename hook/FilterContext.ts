@@ -1,9 +1,6 @@
-import { createContext } from "https://esm.sh/v95/preact@10.11.0/src/index";
-import {
-  StateReducerProps
-} from "../types/TypeIndex.d.ts";
+import { createContext } from "preact";
 
-const initValue: StateReducerProps = {
+const initValue = {
   state: {
     companies: [],
     filterParams: {},
@@ -11,4 +8,6 @@ const initValue: StateReducerProps = {
   dispatch: () => { },
 };
 
-export const FilterContext = createContext(initValue);
+const FilterContext = createContext(initValue);
+
+export default FilterContext
