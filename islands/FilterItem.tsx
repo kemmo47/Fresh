@@ -1,8 +1,12 @@
 // deno-lint-ignore-file prefer-const
-import {useContext, useEffect, useState} from 'preact/hooks';
+import { useContext, useEffect, useState } from "preact/hooks";
 import { CompanyPropertyBooleanType } from "../types/Company.d.ts";
-import { FilterContextType, FilterType, FilterValType } from "../types/type.d.ts";
-import FilterContext from '../hook/FilterContext.ts';
+import {
+  FilterContextType,
+  FilterType,
+  FilterValType,
+} from "../types/type.d.ts";
+import FilterContext from "../hook/FilterContext.ts";
 import { asset } from "https://deno.land/x/fresh@1.1.3/runtime.ts";
 
 type FilterItemProps = {
@@ -25,7 +29,7 @@ export default function FilterItem({
 
   const getUpdatedFilterParams = (
     keyName: string,
-    keyValue: CompanyPropertyBooleanType
+    keyValue: CompanyPropertyBooleanType,
   ): FilterType => {
     let valueParams: FilterValType;
 
@@ -58,10 +62,9 @@ export default function FilterItem({
     };
 
     dispatch({
-      type: 'UPDATE_FILTER_PARAMS',
+      type: "UPDATE_FILTER_PARAMS",
       filter: queryUrl,
     });
-
   };
 
   useEffect(() => {
@@ -76,8 +79,8 @@ export default function FilterItem({
       <div
         className={`${
           isCheck
-            ? 'text-white text-outline-blue'
-            : 'text-gray-800 lg:hover:bg-pink-light'
+            ? "text-white text-outline-blue"
+            : "text-gray-800 lg:hover:bg-pink-light"
         } min-w-max relative group flex justify-center rounded-md py-[17px] lg:py-3.5 px-2 cursor-pointer font-bold bg-gray-200 duration-300 ease-out z-10
        `}
         onClick={() => {
@@ -86,30 +89,33 @@ export default function FilterItem({
       >
         <span
           className={` ${
-            isCheck ? 'bg-blue w-full' : 'w-0'
+            isCheck ? "bg-blue w-full" : "w-0"
           } absolute rounded-md top-0 left-0 flex h-full transition-all duration-300 ease-out opacity-90`}
-        ></span>
+        >
+        </span>
 
         <div className="absolute top-0 left-1 lg:left-4 z-10">
-          {isCheck ? (
-            <img
-              src={asset('/images/ico_bookmark.svg')}
-              width={19}
-              height={28}
-              alt="icon question"
-            />
-          ) : (
-            ''
-          )}
+          {isCheck
+            ? (
+              <img
+                src={asset("/images/ico_bookmark.svg")}
+                width={19}
+                height={28}
+                alt="icon question"
+              />
+            )
+            : (
+              ""
+            )}
         </div>
         <div
           className="z-30 leading-none break-all"
-          style={{ fontSize: 'min(max(7px, 3.5vw), 20px)' }}
+          style={{ fontSize: "min(max(7px, 3.5vw), 20px)" }}
         >
-          {' '}
+          {" "}
           {label}
         </div>
       </div>
     </>
   );
-};
+}
