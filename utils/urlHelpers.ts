@@ -1,13 +1,12 @@
-import type { ParsedUrlQuery } from 'querystring';
-
-import { SEARCH_CONDITION_STORAGE_KEY } from './constant';
+import { SEARCH_CONDITION_STORAGE_KEY } from "./constant.ts";
+import type { ParsedQuery } from "https://deno.land/x/querystring@v1.0.2/mod.js";
 
 export const getSingleValueFromQueryParam = (
-  query: ParsedUrlQuery,
-  key: string
+  query: ParsedQuery,
+  key: string,
 ) => {
   const values = query[key];
-  if (typeof values === 'string') {
+  if (typeof values === "string") {
     return values;
   }
   if (Array.isArray(values) && values.length > 0) {
@@ -32,32 +31,32 @@ interface QueryObject {
  * @returns
  */
 export const convertObjectToQueryStringUrl = (
-  queryObj: QueryObject
+  queryObj: QueryObject,
 ): string => {
-  let queryString = '';
-  for (let key in queryObj) {
-    const values = queryObj[key]?.map((value) => `${key}=${value}`).join('&');
+  let queryString = "";
+  for (const key in queryObj) {
+    const values = queryObj[key]?.map((value) => `${key}=${value}`).join("&");
     queryString += `${values}&`;
   }
   return `${queryString.substring(0, queryString.length - 1)}`;
 };
 
 export const getSearchConditionPath = (): string => {
-  if (typeof window !== 'undefined') {
-    let searchConditions = JSON.parse(
-      localStorage.getItem(SEARCH_CONDITION_STORAGE_KEY) ?? '{}'
+  if (typeof window !== "undefined") {
+    const searchConditions = JSON.parse(
+      localStorage.getItem(SEARCH_CONDITION_STORAGE_KEY) ?? "{}",
     );
     return `${convertObjectToQueryStringUrl(searchConditions)}`;
   }
-  return '';
+  return "";
 };
 
 export const renderParam = (
-  params: Record<string, string | number | boolean>
+  params: Record<string, string | number | boolean>,
 ) => {
-  let paramString = '';
-  if (typeof window !== 'undefined') {
-    paramString = window.location.search ? window.location.search : '';
+  let paramString = "";
+  if (typeof window !== "undefined") {
+    paramString = window.location.search ? window.location.search : "";
   }
   const searchParams = new URLSearchParams(paramString);
   for (const [key, value] of Object.entries(params)) {

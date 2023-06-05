@@ -1,23 +1,20 @@
-import {
-  useEffect,
-  useState,
-} from "https://esm.sh/v106/@types/react@18.0.33/index~.d.ts";
-import { useGetFee } from "../hook/useGetFee.tsx";
-import { useModal } from "../hook/useModal.tsx";
 import { Company } from "../types/Company.d.ts";
+import { useGetFee } from "../hook/useGetFee.tsx";
+import { useEffect, useState } from "preact/hooks";
+import { getComboDefault } from "../utils/filterConditions.ts";
 import {
   EFFECTIVE_COMBO_DEFAULT,
   SEARCH_CONDITION_STORAGE_KEY,
 } from "../utils/constant.ts";
-import { getComboDefault } from "../utils/filterConditions.ts";
 
 type ItemHairProps = {
   item: Company;
   isPRItem: boolean;
 };
+import { IconNext } from "../components/Icon/IconNext.tsx";
+import { AppLink } from "../utils/AppConfig.ts";
 
-export const ItemHair = ({ item, isPRItem }: ItemHairProps) => {
-  const { isShown, toggle } = useModal();
+export default function ItemHair({ item, isPRItem }: ItemHairProps) {
   const [filterLocalStore, setFilterLocalStore] = useState([]);
   const [cost, setCost] = useState<number>(1);
   const [numberOfTimes, setNumberOfTimes] = useState<number>(1);
@@ -49,6 +46,7 @@ export const ItemHair = ({ item, isPRItem }: ItemHairProps) => {
     <>
       <div className="relative rounded-[5px] mx-2 shadow-[0_0_1px_1px_brown] lg:rounded-lg lg:bg-white-transparent-light bg-white
           lg:shadow-[0px_2px_4px_1px] lg:shadow-violet-transparent p-1">
+        <a href={`${AppLink.topPage()}`}></a>
         <div
           className={`lg:border-2 rounded-md overflow-hidden ${
             isPRItem ? "border-pink-dark" : "border-brown"
@@ -60,7 +58,7 @@ export const ItemHair = ({ item, isPRItem }: ItemHairProps) => {
           <div className="grid items-center grid-cols-12">
             <div className="col-span-full text-center">
               <a
-                href={item.company_url}
+                href={"/"}
                 className="block"
                 data-cepc={item.data_cepc}
               >
@@ -113,7 +111,7 @@ export const ItemHair = ({ item, isPRItem }: ItemHairProps) => {
         <div className="grid grid-cols-12 col-span-full gap-2 m-2 items-stretch h-[70px] lg:h-[90px]">
           <div className="col-span-12">
             <a
-              href={item.company_url}
+              href={"/"}
               data-cepc={item.data_cepc}
             >
               <div className="group border-pink-dark hover:shadow-[0_0_0_0] h-full rounded-[5px] duration-300
@@ -139,14 +137,6 @@ export const ItemHair = ({ item, isPRItem }: ItemHairProps) => {
           </div>
         </div>
       </div>
-      <ItemHairModal
-        isShown={isShown}
-        handleToggleModal={toggle}
-        companyType={item.company_type}
-        companyName={item.company_name}
-        itemHairCost={cost}
-        itemHairNumberOfTimes={numberOfTimes}
-      />
     </>
   );
-};
+}

@@ -1,4 +1,5 @@
-import { useState } from "react";
+// deno-lint-ignore-file no-explicit-any
+import { useState } from "preact/hooks";
 
 import type { Company } from "../types/Company.d.ts";
 

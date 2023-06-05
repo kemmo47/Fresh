@@ -1,4 +1,5 @@
-import Comparison from "../../static/data/JSON.json" assert { type: "json" };
+import Comparison from "../static/data/JSON.json" assert { type: "json" };
+import ItemHair from "./ItemHair.tsx";
 
 export default function ListComparison() {
   return (

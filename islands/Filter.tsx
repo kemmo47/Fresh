@@ -28,7 +28,7 @@ export type FilterStructureType = {
 };
 
 export default function Filter() {
-  const [isOpenCollapses, setIsOpenCollapses] = useState(false);
+  const [isOpenCollapses, setIsOpenCollapses] = useState<boolean>(false);
   const { isShown, toggle } = useModal();
   const [dataModal, setDataModal] = useState<FilterConditionType[]>([]);
 

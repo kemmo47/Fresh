@@ -19,3 +19,19 @@
     grid-template-columns: repeat(auto-fit, minmax(min(100%/3, max(64px, 100%/2)), 1fr))
   }
 }
+
+.bg_badge {
+  -webkit-clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+  clip-path: polygon(100% 0, 100% 100%, 50% 80%, 0 100%, 0 0);
+  font-weight: 700;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.filterPink {
+  filter: invert(57%) sepia(71%) saturate(1516%) hue-rotate(298deg)
+    brightness(99%) contrast(104%);
+}
